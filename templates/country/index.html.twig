@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Country index{% endblock %}
+
+{% block body %}
+    <h1>List Des Pays</h1>
+
+        <a  class="btn btn-primary" style="margin-botton:20px" href="{{ path('country_new') }}">Ajouter un Pays</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for country in countries %}
+            <tr>
+                <td>{{ country.id }}</td>
+                <td>{{ country.name }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('country_show', {'id': country.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('country_edit', {'id': country.id}) }}">edit</a>
+                    
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun Pays </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
